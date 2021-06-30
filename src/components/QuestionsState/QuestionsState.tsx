@@ -3,7 +3,6 @@ import { Container } from 'react-bootstrap';
 import './QuestionsState.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/reducers/rootReducer';
-import ActiveQuestionState from './ActiveQuestionState';
 
 const QuestionsStatus: React.FC = () => {
 	const isError = (index: number) => {
@@ -19,7 +18,10 @@ const QuestionsStatus: React.FC = () => {
 	return (
 		<Container className='state-container'>
 			{questions.map(question => (
-				<ActiveQuestionState id={question.id + 1} classes={isError(question.id)} />
+				<span key={question.id}>
+					{question.id + 1}
+					<i className={isError(question.id)}></i>
+				</span>
 			))}
 		</Container>
 	);
